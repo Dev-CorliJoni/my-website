@@ -10,15 +10,12 @@ pipeline {
                 script {
                     assets_path = env.NAS_PHOTO_PROGRAMMING_PROJECTS + '\\my-website\\assets'
                     assets_dest = env.WORKSPACE + '\\src\\'
+                    param = 'Copy-Item -Path “' + assets_path + '” -Destination “' + assets_dest + '” -Recurse'
                 }
-
-                param = 'Copy-Item -Path “' + assets_path + '” -Destination “' + assets_dest + '” -Recurse'
 
                 powershell param
                 echo 'Executed: powershell ' + param
-
-
-
+                
                 //bat("xcopy ${env.NAS_PHOTO_PROGRAMMING_PROJECTS}\\my-website\\assets ${env.WORKSPACE} /O /X /E /H /K")
 
             }
