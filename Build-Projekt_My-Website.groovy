@@ -13,9 +13,10 @@ pipeline {
                     param = 'Copy-Item -Path “' + assets_path + '” -Destination “' + assets_dest + '” -Recurse'
                 }
 
-                echo 'Execute: powershell ' + param
-                bat "powershell.exe -NonInteractive -ExecutionPolicy Bypass -Command \"" + param + "\""
-                powershell "'" + param + "'"
+                echo "xcopy " + assets_path + " " + assets_dest + " /O /X /E /H /K"
+                bat("xcopy " + assets_path + " " + assets_dest + " /O /X /E /H /K")
+                //bat "powershell.exe -NonInteractive -ExecutionPolicy Bypass -Command \"" + param + "\""
+                //powershell "'" + param + "'"
                 echo 'Executed: powershell ' + param
 
                 //bat("xcopy ${env.NAS_PHOTO_PROGRAMMING_PROJECTS}\\my-website\\assets ${env.WORKSPACE} /O /X /E /H /K")
