@@ -10,13 +10,15 @@ pipeline {
                 script {
                     assets_path = env.NAS_PHOTO_PROGRAMMING_PROJECTS + '\\my-website\\assets'
                     assets_dest = env.WORKSPACE + '/src/'
-                    param = 'Copy-Item -Path “' + assets_path + '” -Destination “' + assets_dest + '” -Recurse'
+                    //param = 'Copy-Item -Path “' + assets_path + '” -Destination “' + assets_dest + '” -Recurse'
+
+                    def response = httpRequest "https://nas.home:5001/sharing/ieG2ml8ja"
+                    node() {
+                        writeFile file: assets_dest + '\\response.zip', text: response.content
+                    }
                 }
 
-                def response = httpRequest "https://nas.home:5001/sharing/ieG2ml8ja"
-                node() {
-                    writeFile file: assets_dest + '\\response.zip', text: response.content
-                }
+
 
 
                 //echo "xcopy " + assets_path + " " + assets_dest + " /O /X /E /H /K"
