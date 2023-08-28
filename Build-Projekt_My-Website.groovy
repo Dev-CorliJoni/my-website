@@ -14,7 +14,7 @@ pipeline {
                 }
 
                 echo 'Execute: powershell ' + param
-                sh 'pwsh "' + param + '"'
+                
                 powershell "'" + param + "'"
                 echo 'Executed: powershell ' + param
 
