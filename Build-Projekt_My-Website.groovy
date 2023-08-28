@@ -7,7 +7,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Hello World'
+                npm start build
+            }
+        }
+        stage('Build') {
+            steps {
+                bat("xcopy C:\\My-Source C:\\My-Destination /O /X /E /H /K")
             }
         }
     }
