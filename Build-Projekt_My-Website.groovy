@@ -7,14 +7,19 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                withNPM() {
-                    echo "Performing npm build..."
+                nodejs(nodeJSInstallationName: 'NODEJS_20.5.1') {
                     sh 'npm install'
                     sh 'npm start build'
                 }
-                script {
-                    bat("npm start build")
-                }
+
+                //withNPM(npmrcConfig:'my-custom-npmrc') {
+                //    echo "Performing npm build..."
+                //    sh 'npm install'
+                //    sh 'npm start build'
+                //}
+                //script {
+                //    bat("npm start build")
+                //}
             }
         }
         //stage('Copy Dependencies') {
