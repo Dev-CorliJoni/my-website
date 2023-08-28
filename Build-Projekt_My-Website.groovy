@@ -7,6 +7,11 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                withNPM(npmrcConfig:'my-custom-npmrc') {
+                    echo "Performing npm build..."
+                    sh 'npm install'
+                    sh 'npm start build'
+                }
                 script {
                     bat("npm start build")
                 }
@@ -14,7 +19,7 @@ pipeline {
         }
         //stage('Copy Dependencies') {
         //    steps {
-                //bat("xcopy ${NAS_PHOTO_PROGRAMMING_PROJECTS}\my-website\assets ... /O /X /E /H /K")
+                //bat("xcopy ${env.NAS_PHOTO_PROGRAMMING_PROJECTS}\my-website\assets ... /O /X /E /H /K")
         //    }
         //}
     }
