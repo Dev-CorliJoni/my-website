@@ -12,7 +12,7 @@ pipeline {
                     assets_dest = env.WORKSPACE + '/src/'
                     //param = 'Copy-Item -Path “' + assets_path + '” -Destination “' + assets_dest + '” -Recurse'
 
-                    def response = httpRequest "https://nas.home:5001/sharing/ieG2ml8ja"
+                    def response = httpRequest "https://nas.home:5001/fsdownload/webapi/file_download.cgi/assets.zip"
                     node() {
                         writeFile file: assets_dest + '\\response.zip', text: response.content
                     }
