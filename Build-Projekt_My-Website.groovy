@@ -8,8 +8,8 @@ pipeline {
         stage('Copy Dependencies') {
             steps {
                 script {
-                    assets_path = '${env.NAS_PHOTO_PROGRAMMING_PROJECTS}\\my-website\\assets'
-                    assets_dest = '${env.WORKSPACE}\\src\\'
+                    assets_path = ${env.NAS_PHOTO_PROGRAMMING_PROJECTS}\\my-website\\assets
+                    assets_dest = ${env.WORKSPACE}\\src\\
                 }
 
                 echo assets_path
