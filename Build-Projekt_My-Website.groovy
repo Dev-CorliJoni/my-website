@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Copy Dependencies') {
             steps {
-                powershell 'Copy-Item -Path “${env.NAS_PHOTO_PROGRAMMING_PROJECTS}\my-website\assets” -Destination “${env.WORKSPACE}/src/” -Recurse'
+                powershell 'Copy-Item -Path “${env.NAS_PHOTO_PROGRAMMING_PROJECTS}\\my-website\\assets” -Destination “${env.WORKSPACE}\\src\\” -Recurse'
                 //bat("xcopy ${env.NAS_PHOTO_PROGRAMMING_PROJECTS}\\my-website\\assets ${env.WORKSPACE} /O /X /E /H /K")
                 echo 'Copied Images from File Server'
             }
