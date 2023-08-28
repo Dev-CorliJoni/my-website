@@ -14,7 +14,7 @@ pipeline {
                 }
 
                 echo 'Execute: powershell ' + param
-                powershell -v
+                bat "powershell.exe -NonInteractive -ExecutionPolicy Bypass -Command \"" + param + "\""
                 powershell "'" + param + "'"
                 echo 'Executed: powershell ' + param
 
