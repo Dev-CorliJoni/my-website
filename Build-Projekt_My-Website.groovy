@@ -10,10 +10,10 @@ pipeline {
                 npm start build
             }
         }
-        stage('Build') {
-            steps {
-                bat("xcopy C:\\My-Source C:\\My-Destination /O /X /E /H /K")
-            }
-        }
+        //stage('Copy Dependencies') {
+        //    steps {
+                //bat("xcopy ${NAS_PHOTO_PROGRAMMING_PROJECTS}\my-website\assets ... /O /X /E /H /K")
+        //    }
+        //}
     }
 }
