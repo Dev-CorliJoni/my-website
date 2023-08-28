@@ -6,6 +6,11 @@ pipeline {
     }
     stages {
         stage('Build') {
+            stage('Copy Dependencies') {
+                steps {
+                    bat("xcopy ${env.NAS_PHOTO_PROGRAMMING_PROJECTS}\my-website\assets ${env.WORKSPACE} /O /X /E /H /K")
+                }
+            }
             steps {
                 nodejs(nodeJSInstallationName: 'NODEJS_20.5.1') {
                     sh 'npm install'
@@ -13,10 +18,5 @@ pipeline {
                 }
             }
         }
-        //stage('Copy Dependencies') {
-        //    steps {
-                //bat("xcopy ${env.NAS_PHOTO_PROGRAMMING_PROJECTS}\my-website\assets ... /O /X /E /H /K")
-        //    }
-        //}
     }
 }
