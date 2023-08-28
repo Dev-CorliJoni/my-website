@@ -7,16 +7,20 @@ pipeline {
     stages {
         stage('Copy Dependencies') {
             steps {
-                $assets_path = '${env.NAS_PHOTO_PROGRAMMING_PROJECTS}\\my-website\\assets'
-                $assets_dest = '${env.WORKSPACE}\\src\\'
+                script {
+                    assets_path = '${env.NAS_PHOTO_PROGRAMMING_PROJECTS}\\my-website\\assets'
+                    assets_dest = '${env.WORKSPACE}\\src\\'
 
-                echo '${assets_path}'
-                echo '${assets_dest}'
+                    echo '${assets_path}'
+                    echo '${assets_dest}'
+
+                    powershell 'Copy-Item -Path “${assets_path}” -Destination “${assets_dest}” -Recurse'
+                    echo 'Executed: powershell "Copy-Item -Path “${env.NAS_PHOTO_PROGRAMMING_PROJECTS}\\my-website\\assets” -Destination “${env.WORKSPACE}\\src\\” -Recurse"'
+                }
 
 
-                powershell 'Copy-Item -Path “${assets_path}” -Destination “${assets_dest}” -Recurse'
                 //bat("xcopy ${env.NAS_PHOTO_PROGRAMMING_PROJECTS}\\my-website\\assets ${env.WORKSPACE} /O /X /E /H /K")
-                echo 'Executed: powershell "Copy-Item -Path “${env.NAS_PHOTO_PROGRAMMING_PROJECTS}\\my-website\\assets” -Destination “${env.WORKSPACE}\\src\\” -Recurse"'
+
             }
         }
         stage('Build') {
