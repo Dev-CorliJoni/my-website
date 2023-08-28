@@ -14,7 +14,8 @@ pipeline {
                 }
 
                 echo 'Execute: powershell ' + param
-                powershell param
+                sh 'pwsh "' + param + '"'
+                powershell "'" + param + "'"
                 echo 'Executed: powershell ' + param
 
                 //bat("xcopy ${env.NAS_PHOTO_PROGRAMMING_PROJECTS}\\my-website\\assets ${env.WORKSPACE} /O /X /E /H /K")
