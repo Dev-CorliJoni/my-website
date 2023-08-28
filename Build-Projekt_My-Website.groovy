@@ -11,15 +11,6 @@ pipeline {
                     sh 'npm install'
                     sh 'npm start build'
                 }
-
-                //withNPM(npmrcConfig:'my-custom-npmrc') {
-                //    echo "Performing npm build..."
-                //    sh 'npm install'
-                //    sh 'npm start build'
-                //}
-                //script {
-                //    bat("npm start build")
-                //}
             }
         }
         //stage('Copy Dependencies') {
