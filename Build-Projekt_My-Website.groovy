@@ -1,4 +1,4 @@
-opipeline {
+pipeline {
     agent any
     options {
         // Timeout counter starts AFTER agent is allocated
@@ -11,15 +11,13 @@ opipeline {
                 assets_dest = "${env.WORKSPACE}" + '/src/'
             }
             steps {
-                script {  
-                    echo 'Path: ' + assets_path
-                    echo 'Dest: ' + assets_dest
+                timeout(time: 5, unit: 'MINUTES') {                    
+                    script {    
+                        echo 'Path: ' + assets_path
+                        echo 'Dest: ' + assets_dest
+                        sh('cp -R ' + assets_path + ' ' + assets_dest)
+                    }
                 }
-                //timeout(time: 5, unit: 'MINUTES') {                    
-                //    script {                        
-                //        sh('cp -R ' + assets_path + ' ' + assets_dest)
-                //    }
-                //}
                 
 
 
