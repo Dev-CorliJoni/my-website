@@ -15,7 +15,7 @@ pipeline {
                     script {    
                         echo 'Path: ' + assets_path
                         echo 'Dest: ' + assets_dest
-                        sh('cp -R ' + assets_path + ' ' + assets_dest)
+                        sh('cp -R \\\\nas.home\\share\\Projects\\my-website\\assets ' + assets_dest)
                     }
                 }
                 
