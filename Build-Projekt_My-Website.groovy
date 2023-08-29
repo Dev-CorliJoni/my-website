@@ -7,6 +7,9 @@ pipeline {
     stages {
         stage('Copy Dependencies') {
             steps {
+                options {
+                    timeout(time: 1, unit: 'HOURS')   // timeout on this stage
+                }
                 script {
                     assets_path = env.NAS_PHOTO_PROGRAMMING_PROJECTS + '\\my-website\\assets'
                     assets_dest = env.WORKSPACE + '/src/'
