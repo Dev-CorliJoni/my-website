@@ -13,7 +13,8 @@ pipeline {
             steps {
                 timeout(time: 5, unit: 'MINUTES') {
                     dir(assets_path) {
-                        bat "xcopy .\\ " + assets_dest + " /O /X /E /H /K"
+                        sh 'cp -R .\\ ' + assets_dest
+                        //"xcopy .\\ " + assets_dest + " /O /X /E /H /K"
                     }
                     //script {
                         //param = 'Copy-Item -Path “' + assets_path + '” -Destination “' + assets_dest + '” -Recurse'
