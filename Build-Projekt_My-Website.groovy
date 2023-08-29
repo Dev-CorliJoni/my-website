@@ -7,19 +7,21 @@ pipeline {
     stages {
         stage('Copy Dependencies') {
             steps {
+                environment {
+                    assets_path = env.NAS_PHOTO_PROGRAMMING_PROJECTS + '\\my-website\\assets'
+                    assets_dest = env.WORKSPACE + '/src/'
+                    
+                    assets_url = "https://nas.home:5001/fsdownload/webapi/file_download.cgi/assets.zip"
+                }
                 options {
                     timeout(time: 1, unit: 'HOURS')   // timeout on this stage
                 }
                 script {
-                    assets_path = env.NAS_PHOTO_PROGRAMMING_PROJECTS + '\\my-website\\assets'
-                    assets_dest = env.WORKSPACE + '/src/'
                     //param = 'Copy-Item -Path “' + assets_path + '” -Destination “' + assets_dest + '” -Recurse'
+                    
+                    def response = httpRequest assets_url
 
-                    def response = httpRequest "https://nas.home:5001/fsdownload/webapi/file_download.cgi/assets.zip"
-
-                    echo "Status: " + response.status
-                    echo "Response: " + response.content
-                    echo "Headers: " + response.headers
+                    echo "Requested: " + assets_url
 
                     node() {
                         writeFile file: (assets_dest + '/response.zip'), text: response.content
