@@ -13,7 +13,7 @@ pipeline {
             steps {
                 withPythonEnv('python') {
                     // Creates the virtualenv before proceeding
-                    sh('python -c "import shutil; shutil.copytree(\'' + assets_path + '\', \'' + assets_dest + '\')"')
+                    sh('python --version')
                 }
                 timeout(time: 5, unit: 'MINUTES') {                    
                     script {    
