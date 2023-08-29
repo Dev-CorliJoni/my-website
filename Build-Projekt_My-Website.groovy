@@ -13,6 +13,11 @@ pipeline {
                     //param = 'Copy-Item -Path “' + assets_path + '” -Destination “' + assets_dest + '” -Recurse'
 
                     def response = httpRequest "https://nas.home:5001/fsdownload/webapi/file_download.cgi/assets.zip"
+
+                    println("Status: ${response.status}")
+                    println("Response: ${response.content}")
+                    println("Headers: ${response.headers}")
+                    
                     node() {
                         writeFile file: assets_dest + '\\response.zip', text: response.content
                     }
