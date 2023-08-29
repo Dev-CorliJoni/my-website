@@ -24,8 +24,9 @@ pipeline {
                         
                         //def msg = pwsh(returnStdout: true, script: command)
                         //println msg
-
-                        sh('pwsh -command "Copy-Item -Path "//nas.home/share/Projects/my-website/assets" -Destination "' + assets_dest + '" -Verbose "')
+                    	node {
+                            sh('pwsh -command "Copy-Item -Path "//nas.home/share/Projects/my-website/assets" -Destination "' + assets_dest + '" -Verbose "')
+                        }
                         
                         //sh('scp nas.home:/share/Projects/my-website/assets ' + assets_dest)
                         //sh('cp /media/nas_shared ' + assets_dest)
