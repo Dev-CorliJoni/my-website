@@ -13,7 +13,7 @@ pipeline {
             steps {
                 timeout(time: 5, unit: 'MINUTES') {
                     dir(assets_path) {
-                            powershell 'Copy-Item -Path ".\\*" -Destination "' + assets_dest + '" -Recurse -Force'
+                        bat "xcopy .\\ " + assets_dest + " /O /X /E /H /K"
                     }
                     //script {
                         //param = 'Copy-Item -Path “' + assets_path + '” -Destination “' + assets_dest + '” -Recurse'
