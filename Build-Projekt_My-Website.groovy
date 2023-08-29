@@ -21,7 +21,7 @@ pipeline {
                     //outputFile: ...
                     //echo "Request successfully"
                     dir(assets_path) {
-                        bat("xcopy " + assets_path + " " + assets_dest + " /O /X /E /H /K")
+                        bat("xcopy .\\ " + assets_dest + " /O /X /E /H /K")
                     }
                     
                     //node() {
