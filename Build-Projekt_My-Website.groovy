@@ -17,8 +17,8 @@ pipeline {
                         echo 'Dest: ' + assets_dest
 
                         
-                        sh('sudo apt-get install cifs-utils')
-                        sh('sudo mount -t cifs //nas.home/share/Projects/my-website/assets /media/nas_shared')
+                        sh('apt-get install cifs-utils')
+                        sh('mount -t cifs //nas.home/share/Projects/my-website/assets /media/nas_shared')
                         
                         sh('cp /media/nas_shared ' + assets_dest)
                         //sh('cp -R //nas.home/share/Projects/my-website/assets ' + assets_dest)
