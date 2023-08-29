@@ -11,14 +11,14 @@ opipeline {
                 assets_dest = "${env.WORKSPACE}" + '/src/'
             }
             steps {
+                echo 'Path: ' + assets_path
+                echo 'Dest: ' + assets_dest
                 timeout(time: 5, unit: 'MINUTES') {
                     //dir(assets_path) {
                     //    sh('cp -R .\\ ' + assets_dest)
                         //"xcopy .\\ " + assets_dest + " /O /X /E /H /K"
                     //}
-                    script {
-                        echo 'Path: ' + assets_path
-                        echo 'Dest: ' + assets_dest
+                    script {                        
                         sh('cp -R ' + assets_path + ' ' + assets_dest)
                         //param = 'Copy-Item -Path “' + assets_path + '” -Destination “' + assets_dest + '” -Recurse'
                     //    echo "assets_path: " + assets_path
