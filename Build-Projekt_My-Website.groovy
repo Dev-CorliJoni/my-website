@@ -20,7 +20,10 @@ pipeline {
                     //def response = httpRequest url: assets_url, consoleLogResponseBody: true, httpMode: GET, timeout: 10
                     //outputFile: ...
                     //echo "Request successfully"
-                    bat("xcopy " + assets_path + " " + assets_dest + " /O /X /E /H /K")
+                    dir(assets_path) {
+                        bat("xcopy " + assets_path + " " + assets_dest + " /O /X /E /H /K")
+                    }
+                    
                     //node() {
                        
                     //    writeFile file: (assets_dest + '/response.zip'), text: response.content
