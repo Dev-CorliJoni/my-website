@@ -22,7 +22,7 @@ pipeline {
                     //echo "Request successfully"
                     
                     node() {
-                        bat "xcopy " + assets_path + " " + assets_dest + " /O /X /E /H /K"
+                        bat("xcopy " + assets_path + " " + assets_dest + " /O /X /E /H /K")
                     //    writeFile file: (assets_dest + '/response.zip'), text: response.content
                     }
                 }
