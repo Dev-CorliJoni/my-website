@@ -17,12 +17,12 @@ pipeline {
                     //param = 'Copy-Item -Path “' + assets_path + '” -Destination “' + assets_dest + '” -Recurse'
 
                     echo "Requested: " + assets_url
-                    def response = httpRequest url: "${assets_url}", consoleLogResponseBody: true, httpMode: GET, timeout: 10
+                    def response = httpRequest url: assets_url, consoleLogResponseBody: true, httpMode: GET, timeout: 10
                     //outputFile: ...
                     echo "Request successfully"
                     
                     node() {
-                        writeFile file: ("${assets_dest}" + '/response.zip'), text: response.content
+                        writeFile file: ("assets_dest + '/response.zip'), text: response.content
                     }
                 }
 
