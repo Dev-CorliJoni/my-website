@@ -11,8 +11,10 @@ opipeline {
                 assets_dest = "${env.WORKSPACE}" + '/src/'
             }
             steps {
-                echo 'Path: ' + assets_path
-                echo 'Dest: ' + assets_dest
+                script {  
+                    echo 'Path: ' + assets_path
+                    echo 'Dest: ' + assets_dest
+                }
                 timeout(time: 5, unit: 'MINUTES') {
                     //dir(assets_path) {
                     //    sh('cp -R .\\ ' + assets_dest)
