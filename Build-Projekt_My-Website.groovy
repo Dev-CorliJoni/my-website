@@ -12,11 +12,12 @@ pipeline {
             }
             steps {
                 timeout(time: 5, unit: 'MINUTES') {
-                    dir(assets_path) {
-                        sh('cp -R .\\ ' + assets_dest)
+                    //dir(assets_path) {
+                    //    sh('cp -R .\\ ' + assets_dest)
                         //"xcopy .\\ " + assets_dest + " /O /X /E /H /K"
-                    }
-                    //script {
+                    //}
+                    script {
+                        sh('cp -R .\\ ' + assets_dest)
                         //param = 'Copy-Item -Path “' + assets_path + '” -Destination “' + assets_dest + '” -Recurse'
                     //    echo "assets_path: " + assets_path
                     //    echo "assets_dest: " + assets_dest
@@ -27,7 +28,7 @@ pipeline {
                            
                         //    writeFile file: (assets_dest + '/response.zip'), text: response.content
                         // }
-                    //}
+                    }
                 }
                 
 
