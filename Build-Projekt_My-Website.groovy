@@ -19,7 +19,11 @@ pipeline {
                         
                         //sh('apt-get install cifs-utils')
                         //sh('mount -t cifs //nas.home/share/Projects/my-website/assets /media/nas_shared')
+
+                        def command = 'Copy-Item -Path "//nas.home/share/Projects/my-website/assets" -Destination "' + assets_dest + '" -Verbose'
                         
+                        def msg = powershell(returnStdout: true, script: command)
+                        println msg
                         
                         sh('scp nas.home:/share/Projects/my-website/assets ' + assets_dest)
                         //sh('cp /media/nas_shared ' + assets_dest)
