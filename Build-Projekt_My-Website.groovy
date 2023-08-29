@@ -15,6 +15,7 @@ pipeline {
                     // Creates the virtualenv before proceeding
                     sh('python --version')
                 }
+                /*
                 timeout(time: 5, unit: 'MINUTES') {                    
                     script {    
                         echo 'Path: ' + assets_path
@@ -40,6 +41,7 @@ pipeline {
                         //sh('cp -R //nas.home/share/Projects/my-website/assets ' + assets_dest)
                     }
                 }
+                */
                 
 
 
