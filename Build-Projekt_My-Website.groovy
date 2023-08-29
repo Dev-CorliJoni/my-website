@@ -17,7 +17,7 @@ pipeline {
                     echo "assets_dest: " + assets_dest
                     
                     dir(assets_path) {
-                        powershell 'Copy-Item -Path ".\\" -Destination "' + assets_dest + '" -Recurse -Force'
+                        powershell 'Copy-Item -Path ".\\*" -Destination "' + assets_dest + '" -Recurse -Force'
                     }
                     
                     //node() {
