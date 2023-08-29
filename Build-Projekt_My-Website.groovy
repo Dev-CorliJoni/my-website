@@ -7,8 +7,8 @@ pipeline {
     stages {
         stage('Copy Dependencies') {
             environment {
-                assets_path = env.NAS_PHOTO_PROGRAMMING_PROJECTS + '\\my-website\\assets'
-                assets_dest = env.WORKSPACE + '/src/'
+                assets_path = "${env.NAS_PHOTO_PROGRAMMING_PROJECTS}" + '\\my-website\\assets'
+                assets_dest = "${env.WORKSPACE}" + '/src/'
                 
                 assets_url = "https://nas.home:5001/fsdownload/webapi/file_download.cgi/assets.zip"
             }
