@@ -17,7 +17,7 @@ pipeline {
                         //"xcopy .\\ " + assets_dest + " /O /X /E /H /K"
                     //}
                     script {
-                        sh('cp -R .\\ ' + assets_dest)
+                        sh('cp -R ' + assets_path + ' ' + assets_dest)
                         //param = 'Copy-Item -Path “' + assets_path + '” -Destination “' + assets_dest + '” -Recurse'
                     //    echo "assets_path: " + assets_path
                     //    echo "assets_dest: " + assets_dest
