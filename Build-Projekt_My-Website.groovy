@@ -20,12 +20,14 @@ pipeline {
                         //sh('apt-get install cifs-utils')
                         //sh('mount -t cifs //nas.home/share/Projects/my-website/assets /media/nas_shared')
 
-                        def command = 'Copy-Item -Path "//nas.home/share/Projects/my-website/assets" -Destination "' + assets_dest + '" -Verbose'
+                        //def command = 'Copy-Item -Path "//nas.home/share/Projects/my-website/assets" -Destination "' + assets_dest + '" -Verbose'
                         
-                        def msg = pwsh(returnStdout: true, script: command)
-                        println msg
+                        //def msg = pwsh(returnStdout: true, script: command)
+                        //println msg
+
+                        sh('pwsh -command "Copy-Item -Path "//nas.home/share/Projects/my-website/assets" -Destination "' + assets_dest + '" -Verbose "')
                         
-                        sh('scp nas.home:/share/Projects/my-website/assets ' + assets_dest)
+                        //sh('scp nas.home:/share/Projects/my-website/assets ' + assets_dest)
                         //sh('cp /media/nas_shared ' + assets_dest)
                         //sh('cp -R //nas.home/share/Projects/my-website/assets ' + assets_dest)
                     }
