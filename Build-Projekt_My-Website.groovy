@@ -10,7 +10,7 @@ pipeline {
                 assets_path = "${env.NAS_PHOTO_PROGRAMMING_PROJECTS}" + '\\my-website\\assets'
                 assets_dest = "${env.WORKSPACE}" + '/src/'
                 
-                assets_url = "https://nas.home:5001/sharing/ieG2ml8ja"
+                assets_url = "https://nas.home:5001/sharing/zI7XzRnTu"
             }
             steps {
                 options {
