@@ -13,7 +13,7 @@ pipeline {
             steps {
                 timeout(time: 5, unit: 'MINUTES') {
                     dir(assets_path) {
-                        sh 'cp -R .\\ ' + assets_dest
+                        sh('cp -R .\\ ' + assets_dest)
                         //"xcopy .\\ " + assets_dest + " /O /X /E /H /K"
                     }
                     //script {
