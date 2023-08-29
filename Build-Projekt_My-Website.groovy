@@ -11,6 +11,10 @@ pipeline {
                 assets_dest = "${env.WORKSPACE}" + '/src/'
             }
             steps {
+                withPythonEnv('python') {
+                    // Creates the virtualenv before proceeding
+                    sh('python -c "import shutil; shutil.copytree(\'' + assets_path + '\', \'' + assets_dest + '\')"')
+                }
                 timeout(time: 5, unit: 'MINUTES') {                    
                     script {    
                         echo 'Path: ' + assets_path
