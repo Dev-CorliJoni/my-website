@@ -11,20 +11,23 @@ pipeline {
                 assets_dest = "${env.WORKSPACE}" + '/src/'
             }
             steps {
-                script {
-                    //param = 'Copy-Item -Path “' + assets_path + '” -Destination “' + assets_dest + '” -Recurse'
-                    echo "assets_path: " + assets_path
-                    echo "assets_dest: " + assets_dest
-                    
-                    dir(assets_path) {
-                        powershell 'Copy-Item -Path ".\\*" -Destination "' + assets_dest + '" -Recurse -Force'
+                timeout(time: 5, unit: 'MINUTES') {
+                    script {
+                        //param = 'Copy-Item -Path “' + assets_path + '” -Destination “' + assets_dest + '” -Recurse'
+                        echo "assets_path: " + assets_path
+                        echo "assets_dest: " + assets_dest
+                        
+                        dir(assets_path) {
+                            powershell 'Copy-Item -Path ".\\*" -Destination "' + assets_dest + '" -Recurse -Force'
+                        }
+                        
+                        //node() {
+                           
+                        //    writeFile file: (assets_dest + '/response.zip'), text: response.content
+                        // }
                     }
-                    
-                    //node() {
-                       
-                    //    writeFile file: (assets_dest + '/response.zip'), text: response.content
-                    // }
                 }
+                
 
 
 
