@@ -24,6 +24,7 @@ pipeline {
                         
                         //def msg = pwsh(returnStdout: true, script: command)
                         //println msg
+                        echo 'python3 -c "import shutil; shutil.copytree(\"' + assets_path + '\", \"' + assets_dest + '\")"'
                         sh('python3 -c "import shutil; shutil.copytree(\"' + assets_path + '\", \"' + assets_dest + '\")"')
                         
                         //sh('scp nas.home:/share/Projects/my-website/assets ' + assets_dest)
