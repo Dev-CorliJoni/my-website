@@ -14,7 +14,7 @@ pipeline {
                 timeout(time: 5, unit: 'MINUTES') {                    
                     script {    
                         echo 'Path: ' + assets_path
-                        echo 'Dest: ' + assets_dest <source> <destination>
+                        echo 'Dest: ' + assets_dest
                             
                         sh('scp //nas.home/share/Projects/my-website/assets ' + assets_dest)
                         //sh('cp -R //nas.home/share/Projects/my-website/assets ' + assets_dest)
