@@ -25,7 +25,7 @@ pipeline {
                         //def msg = pwsh(returnStdout: true, script: command)
                         //println msg
                     	node {
-                            sh('pwsh -command "Copy-Item -Path "//nas.home/share/Projects/my-website/assets" -Destination "' + assets_dest + '" -Verbose "')
+                            sh('python3 -c "import shutil; shutil.copytree(\"' + assets_path + '\", \"' + assets_dest + '\")"')
                         }
                         
                         //sh('scp nas.home:/share/Projects/my-website/assets ' + assets_dest)
