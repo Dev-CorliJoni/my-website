@@ -17,7 +17,7 @@ pipeline {
                     echo "assets_dest: " + assets_dest
                     
                     dir(assets_path) {
-                        bat("xcopy .\\ " + assets_dest + " /O /X /E /H /K")
+                        powershell 'Copy-Item -Path ".\\" -Destination "' + assets_dest + '" -Recurse -Force'
                     }
                     
                     //node() {
