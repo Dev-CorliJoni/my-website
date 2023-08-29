@@ -15,11 +15,7 @@ pipeline {
                     //param = 'Copy-Item -Path “' + assets_path + '” -Destination “' + assets_dest + '” -Recurse'
                     echo "assets_path: " + assets_path
                     echo "assets_dest: " + assets_dest
-                    //echo "assets_url: " + assets_url
                     
-                    //def response = httpRequest url: assets_url, consoleLogResponseBody: true, httpMode: GET, timeout: 10
-                    //outputFile: ...
-                    //echo "Request successfully"
                     dir(assets_path) {
                         bat("xcopy .\\ " + assets_dest + " /O /X /E /H /K")
                     }
@@ -43,15 +39,15 @@ pipeline {
 
             }
         }
-        stage('Build') {
-            steps {
-                nodejs(nodeJSInstallationName: 'NODEJS_20.5.1') {
-                    sh 'npm install'
-                    echo 'npm install successfully'
-                    sh 'npm start build'
-                    echo 'npm start build successfully'
-                }
-            }
-        }
+        //stage('Build') {
+        //    steps {
+        //       nodejs(nodeJSInstallationName: 'NODEJS_20.5.1') {
+        //            sh 'npm install'
+        //            echo 'npm install successfully'
+        //            sh 'npm start build'
+        //            echo 'npm start build successfully'
+        //        }
+        //    }
+        //}
     }
 }
