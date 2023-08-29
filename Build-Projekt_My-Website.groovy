@@ -7,24 +7,23 @@ pipeline {
     stages {
         stage('Copy Dependencies') {
             environment {
-                assets_path = "${env.NAS_PHOTO_PROGRAMMING_PROJECTS}" + '\\my-website\\assets'
+                assets_path = "${env.NAS_SHARE_PROJECTS}" + '\\my-website\\assets'
                 assets_dest = "${env.WORKSPACE}" + '/src/'
-                
-                assets_url = "https://nas.home:5001/sharing/zI7XzRnTu"
             }
             steps {
                 script {
                     //param = 'Copy-Item -Path “' + assets_path + '” -Destination “' + assets_dest + '” -Recurse'
                     echo "assets_path: " + assets_path
                     echo "assets_dest: " + assets_dest
-                    echo "assets_url: " + assets_url
+                    //echo "assets_url: " + assets_url
                     
-                    def response = httpRequest url: assets_url, consoleLogResponseBody: true, httpMode: GET, timeout: 10
+                    //def response = httpRequest url: assets_url, consoleLogResponseBody: true, httpMode: GET, timeout: 10
                     //outputFile: ...
-                    echo "Request successfully"
+                    //echo "Request successfully"
                     
                     node() {
-                        writeFile file: (assets_dest + '/response.zip'), text: response.content
+                        bat "xcopy " + assets_path + " " + assets_dest + " /O /X /E /H /K"
+                    //    writeFile file: (assets_dest + '/response.zip'), text: response.content
                     }
                 }
 
