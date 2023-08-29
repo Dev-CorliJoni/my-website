@@ -11,9 +11,11 @@ pipeline {
                 assets_dest = "${env.WORKSPACE}" + '/src/'
             }
             steps {
-                withPythonEnv('python') {
-                    // Creates the virtualenv before proceeding
-                    sh('python --version')
+                dir('/usr/bin/') {
+                    withPythonEnv('python') {
+                        // Creates the virtualenv before proceeding
+                        sh('python --version')
+                    }
                 }
                 /*
                 timeout(time: 5, unit: 'MINUTES') {                    
