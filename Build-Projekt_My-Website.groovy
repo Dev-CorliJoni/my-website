@@ -19,12 +19,12 @@ pipeline {
                 script {
                     //param = 'Copy-Item -Path “' + assets_path + '” -Destination “' + assets_dest + '” -Recurse'
                     
-                    def response = httpRequest assets_url
+                    def response = httpRequest "${assets_url}"
 
-                    echo "Requested: " + assets_url
+                    echo "Requested: " + "${assets_url}"
 
                     node() {
-                        writeFile file: (assets_dest + '/response.zip'), text: response.content
+                        writeFile file: ("${assets_dest}" + '/response.zip'), text: response.content
                     }
                 }
 
