@@ -24,8 +24,12 @@ pipeline {
                         
                         //def msg = pwsh(returnStdout: true, script: command)
                         //println msg
-                        echo 'python -c "import shutil; shutil.copytree(\'' + assets_path + '\', \'' + assets_dest + '\')"'
-                        sh('python -c "import shutil; shutil.copytree(\'' + assets_path + '\', \'' + assets_dest + '\')"')
+                        //echo 'python -c "import shutil; shutil.copytree(\'' + assets_path + '\', \'' + assets_dest + '\')"'
+                        withPythonEnv('some-python-installation') {
+                            // Creates the virtualenv before proceeding
+                            sh('python -c "import shutil; shutil.copytree(\'' + assets_path + '\', \'' + assets_dest + '\')"')
+                        }
+                        
                         
                         //sh('scp nas.home:/share/Projects/my-website/assets ' + assets_dest)
                         //sh('cp /media/nas_shared ' + assets_dest)
